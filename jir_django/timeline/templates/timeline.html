@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if dsuser %}
+    <h1>Hello, {{dsuser.uid}}!</h1>
+{% endif %}
+<div class="row">
+    {% for post in posts %}
+    <a href="{% url 'post' pk=post.pk %}" class="col-6" style="margin: 10px 0;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{post.image_url}}" class="card-img-top" height="150px">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ post.text }}
+                    <div>by {{ post.writer.uid }}</div>
+                    <div>created: {{ post.created_date }}</div>
+                </p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

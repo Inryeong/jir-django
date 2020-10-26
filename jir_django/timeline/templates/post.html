@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'timeline' %}">
+    목록으로
+</a>
+<div>
+    <img src="{{post.image_url}}" width="100%">
+    <p>{{ post.text|linebreaksbr }}</p>
+    <div style="text-align: right">
+        <div>Created: {{ post.created_date }}</div>
+        <div>Posted by {{ post.writer }}</div>
+        <div>Tags {{ post.tags.all|join:", " }}</div>
+    </div>
+</div>
+{% endblock %}
